@@ -101,48 +101,6 @@ class PruebaPaciente(private var _nombre:String="ND", private var _primerAp:Stri
         humedad(cont))
     println("-----------------------------------------------------")
   }
-  
-  def obtenerNivelBienestar():Unit={
-    var contador=0
-    for(x<-0 until nivelBienestar.length){
-      if(nivelBienestar(x)==5){
-        contador+=1
-        println("Nivel de Bienestar MAYOR registrado: "+nombre+"\nFecha: "+fecha(x)+"\nHora de registro: "+
-        horaRegistro(x)+"\nTemperatura: "+temperatura(x)+"\nHumedad: "+humedad(x)+"\nNivel de Bienestar: "+nivelBienestar(x))
-        println("-----------------------------------------------------")
-      }else if((x+1==nivelBienestar.length)&&contador>1){
-        println("No se ha encontrado ningun nivel de bienestar igual a 5!!!")
-        println("-----------------------------------------------------")
-      }
-    }    
-  }
-  
-  def mostrarDatosPaciente():Unit={
-    println("Datos del paciente:\nNombre: "+nombre+"\nPrimer Apellido: "+primerAp+"\nSegundo Apellido: "+
-        segundoAp+"\nEdad: "+edad)
-    println("-----------------------------------------------------")
-  }
-  
-  def mostrarDatosPacienteHoraIndicada():Unit={
-    println("Ingresa la hora a buscar: ")
-    var hora=readInt()
-    var contador=0
-    var bandera=false
-    
-    for(x<-0 until horaRegistro.length){
-      if(horaRegistro(x).equals(hora)){
-        contador=1
-        bandera=true
-        println("Datos del paciente: "+nombre+"\nFecha: "+fecha(x)+"\nHora de registro: "+
-            horaRegistro(x)+"\nNivel de bienestar registrado: "+nivelBienestar(x)+"\nTemperatura: "+
-            temperatura(x)+"\nHumedad: "+humedad(x))
-        println("-----------------------------------------------------")
-      }else if((x+1==horaRegistro.length && contador<=1)&&bandera==false){
-        println("No se ha encontrado esta hora en el sistema!!!")
-        println("-----------------------------------------------------")
-      }
-    }
-  }
 }
 
 object Paciente{
@@ -168,11 +126,8 @@ object Paciente{
       println("(1) - Obtener promedio del nivel de bienestar")
       println("(2) - Obtener temperatura mayor")
       println("(3) - Obtener temperatura menor")
-      println("(4) - Obtener niveles de bienestar nivel 5")
-      println("(5) - Mostrar datos de paciente de una Fecha indicada")
-      println("(6) - Mostrar datos de paciente de una Hora indicada")
       println("-----------------------------------------------------")
-      println("(7) - Salir")
+      println("(4) - Salir")
       println("-----------------------------------------------------")
       opcion=readLine()
       
@@ -180,12 +135,9 @@ object Paciente{
         case "1" => obj.promedioBienestar()
         case "2" => obj.obtenerTemperaturaMayor()
         case "3" => obj.obtenerTemperaturaMenor()
-        case "4" => obj.obtenerNivelBienestar()
-        case "5" => obj.mostrarDatosPaciente()
-        case "6" => obj.mostrarDatosPacienteHoraIndicada()
-        case "7" => println("adios...")
-        case _=>    println("¡Opción incorrecta!")
+        case "4" => println("adios...")
+        case _=>    println("Â¡OpciÃ³n incorrecta!")
       }
-    }while(!opcion.equals("7"))  
+    }while(!opcion.equals("4"))  
   }  
 }
